@@ -19,6 +19,17 @@ test('project boundary rejects traversal and symlink escape',async t=>{
  assert.equal(await projectPath('project',root),join(root,'project'));
  await assert.rejects(projectPath('..',root),/inside/);await assert.rejects(projectPath('escape',root),/inside/);
 });
+test('inventory refuses symlinked manifest and lockfile escaping project',async t=>{
+ const root=await mkdtemp(join(tmpdir(),'doctor-'));t.after(()=>rm(root,{recursive:true,force:true}));
+ const project=join(root,'project');await mkdir(project);
+ await writeFile(join(root,'outside.json'),JSON.stringify({name:'outside'}));
+ await symlink(join(root,'outside.json'),join(project,'package.json'));
+ await assert.rejects(inventory(project),/inside project directory/);
+ await rm(join(project,'package.json'));
+ await writeFile(join(project,'package.json'),JSON.stringify({name:'safe'}));
+ await symlink(join(root,'outside.json'),join(project,'package-lock.json'));
+ await assert.rejects(inventory(project),/inside project directory/);
+});
 test('audit exit 1 is findings, registry errors are failures',async()=>{
  const runner=async(file,args)=>{assert.equal(file,'npm');assert.ok(args.includes('--ignore-scripts'));throw Object.assign(new Error('findings'),{code:1,stdout:'{"vulnerabilities":{"foo":{}}}'});};
  assert.ok((await npmReport('.', ['audit'],runner)).vulnerabilities.foo);
