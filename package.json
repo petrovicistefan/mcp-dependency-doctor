@@ -1,0 +1,12 @@
+{
+  "name": "mcp-dependency-doctor",
+  "version": "0.1.0",
+  "description": "Read-only npm dependency diagnostics for AI coding agents",
+  "type": "module",
+  "bin": { "mcp-dependency-doctor": "src/server.js" },
+  "files": ["src", "README.md", "LICENSE"],
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node src/server.js", "test": "node --test", "check": "node --check src/server.js && node --check src/doctor.js" },
+  "license": "MIT",
+  "keywords": ["mcp", "dependencies", "audit", "ai", "npm"]
+}
