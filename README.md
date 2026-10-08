@@ -65,7 +65,7 @@ Requires `Authorization: Bearer mcp_…`. Hosted `dependency_audit` / `dependenc
 
 ## Roadmap and commercial boundary
 
-Free: local inventory, basic audit and health diagnostics without signup. Proposed Pro: cloud history, monitoring, team dashboard and reports, initially EUR 12/month for Developer, EUR 29/month for the Pro Bundle and EUR 79/month for Team. These are proposed prices, not live offers. Hosted quotas use the control-plane path above; local counters are not used for paid enforcement.
+Free: local inventory, basic audit and health diagnostics without signup. Pro (planned): cloud history, monitoring, team dashboard and reports; no paid plan is live yet. Hosted quotas use the control-plane path above; local counters are not used for paid enforcement.
 
 Next: official MCP SDK; semver-aware Node/peer compatibility; upgrade plan; pnpm/yarn; MCP Registry manifest once repository and npm ownership are verified; shared cloud auth/billing. No server.json claiming unpublished npm artifacts is included.
 
