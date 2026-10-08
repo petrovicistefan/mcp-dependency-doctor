@@ -1,5 +1,6 @@
-import { readFile, realpath } from 'node:fs/promises';
-import { resolve, relative, isAbsolute } from 'node:path';
+import { open, realpath } from 'node:fs/promises';
+import { constants } from 'node:fs';
+import { resolve, relative, isAbsolute, sep } from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
@@ -8,17 +9,21 @@ export async function projectPath(input, root = process.env.MCP_PROJECT_ROOT || 
   const base = await realpath(root);
   const target = await realpath(resolve(base, input || '.'));
   const rel = relative(base, target);
-  if (rel === '..' || rel.startsWith('../') || isAbsolute(rel)) throw new Error('Project must be inside MCP_PROJECT_ROOT');
+  if (rel === '..' || rel.startsWith(`..${sep}`) || isAbsolute(rel)) throw new Error('Project must be inside MCP_PROJECT_ROOT');
   return target;
 }
 async function json(project, filename) {
   const base = await realpath(project);
   const actual = await realpath(resolve(base, filename));
   const rel = relative(base, actual);
-  if (rel === '..' || rel.startsWith('../') || isAbsolute(rel)) {
+  if (rel === '..' || rel.startsWith(`..${sep}`) || isAbsolute(rel)) {
     throw new Error('File must be inside project directory');
   }
-  return JSON.parse(await readFile(actual, 'utf8'));
+  const handle = await open(actual, constants.O_RDONLY | (constants.O_NOFOLLOW || 0));
+  try {
+    if (!(await handle.stat()).isFile()) throw new Error('Manifest and lockfile must be regular files');
+    return JSON.parse(await handle.readFile('utf8'));
+  } finally { await handle.close(); }
 }
 export async function inventory(project) {
   const manifest = await json(project, 'package.json');
@@ -30,6 +35,10 @@ export async function inventory(project) {
   return { project: manifest.name || null, lockfileVersion: lock?.lockfileVersion || null, declared, installed, warnings: !lock ? ['No package-lock.json: exact versions and transitive dependencies are unknown.'] : !lock.packages ? ['Legacy lockfile: inventory requires lockfile v2 or v3.'] : [] };
 }
 export async function npmReport(project, command, runner = exec) {
+  // Validate both inputs before npm can read or transmit dependency data.
+  await json(project, 'package.json');
+  try { await json(project, 'package-lock.json'); }
+  catch (e) { if (e.code !== 'ENOENT') throw e; }
   try {
     const { stdout } = await runner('npm', [...command, '--json', '--ignore-scripts'], { cwd: project, timeout: 45000, maxBuffer: 8 * 1024 * 1024, env: { ...process.env, npm_config_update_notifier: 'false' } });
     return JSON.parse(stdout);
