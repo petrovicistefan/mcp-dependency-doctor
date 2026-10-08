@@ -3,9 +3,17 @@
   "version": "0.1.0",
   "description": "Read-only npm dependency diagnostics for AI coding agents",
   "type": "module",
-  "bin": { "mcp-dependency-doctor": "src/server.js" },
-  "files": ["src", "README.md", "LICENSE"],
-  "engines": { "node": ">=22" },
+  "bin": {
+    "mcp-dependency-doctor": "src/server.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "start": "node src/server.js",
     "start:hosted": "node --env-file=.env src/hosted.js",
@@ -13,5 +21,20 @@
     "check": "node --check src/server.js && node --check src/doctor.js && node --check src/control-plane-client.js && node --check src/hosted.js"
   },
   "license": "MIT",
-  "keywords": ["mcp", "dependencies", "audit", "ai", "npm"]
+  "keywords": [
+    "mcp",
+    "dependencies",
+    "audit",
+    "ai",
+    "npm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petrovicistefan/mcp-dependency-doctor.git"
+  },
+  "homepage": "https://github.com/petrovicistefan/mcp-dependency-doctor#readme",
+  "bugs": {
+    "url": "https://github.com/petrovicistefan/mcp-dependency-doctor/issues"
+  },
+  "author": "Stefan Petrovici"
 }
