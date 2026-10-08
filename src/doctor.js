@@ -11,11 +11,19 @@ export async function projectPath(input, root = process.env.MCP_PROJECT_ROOT || 
   if (rel === '..' || rel.startsWith('../') || isAbsolute(rel)) throw new Error('Project must be inside MCP_PROJECT_ROOT');
   return target;
 }
-async function json(path) { return JSON.parse(await readFile(path, 'utf8')); }
+async function json(project, filename) {
+  const base = await realpath(project);
+  const actual = await realpath(resolve(base, filename));
+  const rel = relative(base, actual);
+  if (rel === '..' || rel.startsWith('../') || isAbsolute(rel)) {
+    throw new Error('File must be inside project directory');
+  }
+  return JSON.parse(await readFile(actual, 'utf8'));
+}
 export async function inventory(project) {
-  const manifest = await json(resolve(project, 'package.json'));
+  const manifest = await json(project, 'package.json');
   let lock;
-  try { lock = await json(resolve(project, 'package-lock.json')); }
+  try { lock = await json(project, 'package-lock.json'); }
   catch (e) { if (e.code !== 'ENOENT') throw e; }
   const declared = Object.entries({ ...manifest.dependencies, ...manifest.devDependencies, ...manifest.optionalDependencies }).map(([name, requested]) => ({name, requested}));
   const installed = Object.entries(lock?.packages || {}).filter(([path, entry]) => path && entry.version && path.includes('node_modules/')).map(([path, entry]) => ({ name: entry.name || path.split('node_modules/').at(-1), version: entry.version, path, dev: !!entry.dev, nodeRequirement: entry.engines?.node || null }));
