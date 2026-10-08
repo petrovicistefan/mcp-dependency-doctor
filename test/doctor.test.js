@@ -73,3 +73,9 @@ test('sibling paths are outside the configured root on every platform',async t=>
  await assert.rejects(projectPath('../allowed-other',root),/inside/);
  await symlink(sibling,join(root,'escape'),'junction');await assert.rejects(projectPath('escape',root),/inside/);
 });
+
+test('FIFO manifest is rejected before a blocking open',{skip:process.platform==='win32',timeout:2000},async t=>{
+ const root=await mkdtemp(join(tmpdir(),'doctor-'));t.after(()=>rm(root,{recursive:true,force:true}));
+ await new Promise((resolve,reject)=>{const child=spawn('mkfifo',[join(root,'package.json')]);child.on('error',reject);child.on('exit',code=>code===0?resolve():reject(new Error('mkfifo failed')));});
+ await assert.rejects(inventory(root),/regular files/);
+});

@@ -1,4 +1,4 @@
-import { open, realpath } from 'node:fs/promises';
+import { lstat, open, realpath } from 'node:fs/promises';
 import { constants } from 'node:fs';
 import { resolve, relative, isAbsolute, sep } from 'node:path';
 import { execFile } from 'node:child_process';
@@ -19,6 +19,7 @@ async function json(project, filename) {
   if (rel === '..' || rel.startsWith(`..${sep}`) || isAbsolute(rel)) {
     throw new Error('File must be inside project directory');
   }
+  if (!(await lstat(actual)).isFile()) throw new Error('Manifest and lockfile must be regular files');
   const handle = await open(actual, constants.O_RDONLY | (constants.O_NOFOLLOW || 0));
   try {
     if (!(await handle.stat()).isFile()) throw new Error('Manifest and lockfile must be regular files');
