@@ -2,6 +2,71 @@
 
 Read-only dependency diagnostics for AI coding agents. Free local inventory and npm audits, without an account. Node.js 22+, npm required. Initial scope: npm projects with package-lock.json v2/v3.
 
+## Install in your AI client
+
+Works with any MCP client over stdio; no account or API key needed for the local server.
+
+**Claude Code**
+
+```sh
+claude mcp add dependency-doctor -- npx -y mcp-dependency-doctor
+```
+
+**Codex CLI**
+
+```sh
+codex mcp add dependency-doctor -- npx -y mcp-dependency-doctor
+```
+
+**Claude Desktop, Cursor, Windsurf, Cline, Gemini CLI** — add to the client's MCP config (`claude_desktop_config.json`, `~/.cursor/mcp.json`, `~/.codeium/windsurf/mcp_config.json`, Cline MCP settings, `~/.gemini/settings.json`):
+
+```json
+{
+  "mcpServers": {
+    "dependency-doctor": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-dependency-doctor"
+      ]
+    }
+  }
+}
+```
+
+**VS Code / GitHub Copilot** — `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "dependency-doctor": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-dependency-doctor"
+      ]
+    }
+  }
+}
+```
+
+**Zed** — `settings.json`:
+
+```json
+{
+  "context_servers": {
+    "dependency-doctor": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-dependency-doctor"
+      ]
+    }
+  }
+}
+```
+
 ## Run from source
 
 ```sh

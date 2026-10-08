@@ -2,6 +2,7 @@
   "name": "mcp-dependency-doctor",
   "version": "0.1.0",
   "description": "Read-only npm dependency diagnostics for AI coding agents",
+  "mcpName": "io.github.petrovicistefan/mcp-dependency-doctor",
   "type": "module",
   "bin": {
     "mcp-dependency-doctor": "src/server.js"
@@ -26,7 +27,14 @@
     "dependencies",
     "audit",
     "ai",
-    "npm"
+    "npm",
+    "model-context-protocol",
+    "mcp-server",
+    "ai-agents",
+    "claude",
+    "cursor",
+    "codex",
+    "copilot"
   ],
   "repository": {
     "type": "git",
