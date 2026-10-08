@@ -1,6 +1,6 @@
 {
   "name": "mcp-dependency-doctor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read-only npm dependency diagnostics for AI coding agents",
   "mcpName": "io.github.petrovicistefan/mcp-dependency-doctor",
   "type": "module",

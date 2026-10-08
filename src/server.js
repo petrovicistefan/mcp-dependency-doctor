@@ -12,7 +12,7 @@ export async function dispatch(request) {
   const result = value => ({jsonrpc:'2.0',id:request.id,result:value});
   if (request.method === 'initialize') {
     initialized = true;
-    return result({protocolVersion:supported.includes(request.params?.protocolVersion)?request.params.protocolVersion:'2025-11-25',capabilities:{tools:{listChanged:false}},serverInfo:{name:'mcp-dependency-doctor',version:'0.1.0'}});
+    return result({protocolVersion:supported.includes(request.params?.protocolVersion)?request.params.protocolVersion:'2025-11-25',capabilities:{tools:{listChanged:false}},serverInfo:{name:'mcp-dependency-doctor',version:'0.1.1'}});
   }
   if (request.method === 'ping') return result({});
   if (!initialized) return {jsonrpc:'2.0',id:request.id,error:{code:-32002,message:'Initialize first'}};
