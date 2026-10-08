@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp,writeFile,mkdir,symlink,rm} from 'node:fs/promises';
+import {mkdtemp,writeFile,mkdir,symlink,rm,realpath} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {spawn} from 'node:child_process';
@@ -16,7 +16,7 @@ test('inventory reports exact transitive versions and engines',async t=>{
 test('project boundary rejects traversal and symlink escape',async t=>{
  const root=await mkdtemp(join(tmpdir(),'doctor-'));t.after(()=>rm(root,{recursive:true,force:true}));
  await mkdir(join(root,'project')); await symlink(tmpdir(),join(root,'escape'),'junction');
- assert.equal(await projectPath('project',root),join(root,'project'));
+ assert.equal(await projectPath('project',root),await realpath(join(root,'project')));
  await assert.rejects(projectPath('..',root),/inside/);await assert.rejects(projectPath('escape',root),/inside/);
 });
 test('inventory refuses symlinked manifest and lockfile escaping project',async t=>{
