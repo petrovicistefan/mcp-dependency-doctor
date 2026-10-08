@@ -46,9 +46,26 @@ MVP uses legacy MCP stdio protocol revisions through 2025-11-25. The 2026-07-28 
 
 Node and peer requirements are reported, not resolved: there is no full compatibility solver yet. Old releases are a maintenance signal, not proof of abandonment. No automatic remediation. npm audit coverage depends on the registry and lockfile. npm network operations time out after 45 seconds and fail explicitly; an incomplete audit is never reported as clean. Remote registry smoke tests were blocked in the development environment; unit tests use deterministic fixtures.
 
+## Hosted path (quotas via control plane)
+
+The local stdio MCP stays fully useful without an account. Quotas apply only on a separate hosted HTTP process that reserves units on mcp-control-plane before analysis.
+
+```sh
+cp .env.example .env   # set CONTROL_PLANE_URL
+npm run start:hosted   # default 127.0.0.1:3101
+```
+
+| Method | Path | Body |
+| --- | --- | --- |
+| GET | `/health` | Liveness |
+| POST | `/v1/package-health` | `{ "requestId", "name" }` |
+| POST | `/v1/inventory` | `{ "requestId", "packageJson", "lockfile"? }` |
+
+Requires `Authorization: Bearer mcp_…`. Hosted `dependency_audit` / `dependency_outdated` are not in this MVP. Manifests and package names stay on the hosted host; control-plane sees only `product`, `requestId`, and `units`.
+
 ## Roadmap and commercial boundary
 
-Free: local inventory, basic audit and health diagnostics without signup. Proposed Pro: cloud history, monitoring, team dashboard and reports, initially EUR 12/month for Developer, EUR 29/month for the Pro Bundle and EUR 79/month for Team. These are proposed prices, not live offers. Billing and quotas are not implemented; paid enforcement belongs in the authenticated cloud service, not a bypassable local counter.
+Free: local inventory, basic audit and health diagnostics without signup. Proposed Pro: cloud history, monitoring, team dashboard and reports, initially EUR 12/month for Developer, EUR 29/month for the Pro Bundle and EUR 79/month for Team. These are proposed prices, not live offers. Hosted quotas use the control-plane path above; local counters are not used for paid enforcement.
 
 Next: official MCP SDK; semver-aware Node/peer compatibility; upgrade plan; pnpm/yarn; MCP Registry manifest once repository and npm ownership are verified; shared cloud auth/billing. No server.json claiming unpublished npm artifacts is included.
 

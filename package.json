@@ -6,7 +6,12 @@
   "bin": { "mcp-dependency-doctor": "src/server.js" },
   "files": ["src", "README.md", "LICENSE"],
   "engines": { "node": ">=22" },
-  "scripts": { "start": "node src/server.js", "test": "node --test", "check": "node --check src/server.js && node --check src/doctor.js" },
+  "scripts": {
+    "start": "node src/server.js",
+    "start:hosted": "node --env-file=.env src/hosted.js",
+    "test": "node --test",
+    "check": "node --check src/server.js && node --check src/doctor.js && node --check src/control-plane-client.js && node --check src/hosted.js"
+  },
   "license": "MIT",
   "keywords": ["mcp", "dependencies", "audit", "ai", "npm"]
 }
