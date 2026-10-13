@@ -144,3 +144,11 @@ npm pack --dry-run
 
 Protocol: https://modelcontextprotocol.io/specification/2025-11-25
 Audit: https://docs.npmjs.com/cli/v11/commands/npm-audit/
+
+---
+
+## ⭐ Support this project
+
+**Found this MCP useful? [Star this repository](https://github.com/petrovicistefan/mcp-dependency-doctor)!**
+
+A GitHub star helps other developers discover the project and lets you save it for later. Thanks for supporting open source!
