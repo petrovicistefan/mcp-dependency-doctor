@@ -47,5 +47,54 @@
         "publishedAt": "2026-10-08T20:18:04Z"
       }
     }
+  },
+  {
+    "date": "2026-10-14",
+    "npm": {
+      "downloads24h": 4,
+      "downloads7d": 514,
+      "version": "0.1.1",
+      "publishedAt": "2026-10-08T20:17:47.457Z"
+    },
+    "github": {
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "openIssues": 0,
+      "openPullRequests": 0,
+      "contributors": 2,
+      "contributorsMayBeTruncated": false,
+      "recentCommits": [
+        {
+          "sha": "38a38868ebb8094833d660a935d09c38b2e4d8b9",
+          "date": "2026-10-13T15:04:14Z",
+          "message": "docs: invite users to star and bookmark the project"
+        },
+        {
+          "sha": "0ae3668acbdbe4ec239b237412383542b4c037fd",
+          "date": "2026-10-13T14:46:15Z",
+          "message": "chore(metrics): record daily adoption snapshot"
+        },
+        {
+          "sha": "30dc6d0790302a05fcf52b3c61af720ae44ef889",
+          "date": "2026-10-13T14:44:37Z",
+          "message": "feat(metrics): track daily npm and GitHub adoption"
+        },
+        {
+          "sha": "61008da33095a388b6aa8349d8df7cbc0a4557e8",
+          "date": "2026-10-13T14:44:35Z",
+          "message": "feat(metrics): track daily npm and GitHub adoption"
+        },
+        {
+          "sha": "641f3c5d450274adcb6acce7ba3f0ef40324d78b",
+          "date": "2026-10-09T11:27:35Z",
+          "message": "Add CHANGELOG"
+        }
+      ],
+      "latestRelease": {
+        "tag": "v0.1.1",
+        "publishedAt": "2026-10-08T20:18:04Z"
+      }
+    }
   }
 ]
