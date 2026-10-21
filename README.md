@@ -51,7 +51,7 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
 
 ### VS Code
 
-Install link: `vscode://settings/mcp.servers`
+[Install in VS Code](https://insiders.vscode.dev/redirect/mcp/install?name=dependency-doctor&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22mcp-dependency-doctor%22%5D%7D)
 
 Or create `.vscode/mcp.json` in your project:
 
