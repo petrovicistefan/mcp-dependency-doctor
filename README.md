@@ -15,11 +15,11 @@ Locally diagnose npm projects with package-lock.json: four MCP tools that read l
 
 ### Cursor
 
-[![Add to Cursor](https://img.shields.io/badge/Add_to-Cursor-0066FF?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDJMMiAyMkgyMkwxMiAyWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+)](https://cursor.com/mcp?config=eyJtY3BTZXJ2ZXJzIjp7ImRlcGVuZGVuY3ktZG9jdG9yIjp7ImNvbW1hbmQiOiJucHgiLCJhcmdzIjpbIi15IiwibWNwLWRlcGVuZGVuY3ktZG9jdG9yIl19fX0%3D)
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=dependency-doctor&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIm1jcC1kZXBlbmRlbmN5LWRvY3RvciJdfQ==)
 
-Click the badge above or use this link:
+Click the badge above or use this deeplink:
 ```
-https://cursor.com/mcp?config=eyJtY3BTZXJ2ZXJzIjp7ImRlcGVuZGVuY3ktZG9jdG9yIjp7ImNvbW1hbmQiOiJucHgiLCJhcmdzIjpbIi15IiwibWNwLWRlcGVuZGVuY3ktZG9jdG9yIl19fX0%3D
+cursor://anysphere.cursor-deeplink/mcp/install?name=dependency-doctor&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIm1jcC1kZXBlbmRlbmN5LWRvY3RvciJdfQ==
 ```
 
 ### Claude Code (recommended)
