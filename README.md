@@ -78,6 +78,12 @@ npx -y mcp-dependency-doctor
 
 ---
 
+<p align="center">
+  <img src="docs/demo.gif" alt="MCP Dependency Doctor demo" width="800">
+</p>
+
+---
+
 ## 📋 Table of Contents
 
 - [Why MCP Dependency Doctor?](#why-mcp-dependency-doctor)
