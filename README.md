@@ -6,11 +6,21 @@ Locally diagnose npm projects with package-lock.json: four MCP tools that read l
 
 [![npm version](https://img.shields.io/npm/v/mcp-dependency-doctor?color=blue)](https://www.npmjs.com/package/mcp-dependency-doctor)
 [![npm downloads](https://img.shields.io/npm/dm/mcp-dependency-doctor)](https://www.npmjs.com/package/mcp-dependency-doctor)
+[![Glama](https://glama.ai/mcp/servers/petrovicistefan/mcp-dependency-doctor/badge)](https://glama.ai/mcp/servers/petrovicistefan/mcp-dependency-doctor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## ⚡ Quickstart
+## ⚡ Quick Install
+
+### Cursor
+
+[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en/install-mcp?name=dependency-doctor&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIm1jcC1kZXBlbmRlbmN5LWRvY3RvciJdfQ==)
+
+Click the badge above or use this deeplink:
+```
+cursor://anysphere.cursor-deeplink/mcp/install?name=dependency-doctor&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIm1jcC1kZXBlbmRlbmN5LWRvY3RvciJdfQ==
+```
 
 ### Claude Code (recommended)
 
@@ -18,9 +28,15 @@ Locally diagnose npm projects with package-lock.json: four MCP tools that read l
 claude mcp add dependency-doctor -- npx -y mcp-dependency-doctor
 ```
 
-### Any MCP Client (one command, no install)
+Or, if available in the marketplace:
 
-Add to your MCP config (Cursor, VS Code, Windsurf, Claude Desktop, Cline):
+```bash
+/plugin marketplace add petrovicistefan/mcp-marketplace
+```
+
+### Claude Desktop
+
+Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json` on macOS, `%APPDATA%\Claude\claude_desktop_config.json` on Windows, `~/.config/Claude/claude_desktop_config.json` on Linux):
 
 ```json
 {
@@ -33,15 +49,40 @@ Add to your MCP config (Cursor, VS Code, Windsurf, Claude Desktop, Cline):
 }
 ```
 
+### VS Code
+
+[Install in VS Code](https://insiders.vscode.dev/redirect/mcp/install?name=dependency-doctor&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22mcp-dependency-doctor%22%5D%7D)
+
+Or create `.vscode/mcp.json` in your project:
+
+```json
+{
+  "mcpServers": {
+    "dependency-doctor": {
+      "command": "npx",
+      "args": ["-y", "mcp-dependency-doctor"]
+    }
+  }
+}
+```
+
+### Any MCP Client (Manual)
+
+Run directly with `npx`:
+
+```bash
+npx -y mcp-dependency-doctor
+```
+
 **⭐ Star this repository to support the project and stay updated!** → [Give a star](https://github.com/petrovicistefan/mcp-dependency-doctor)
 
 ---
 
-<!-- TODO: Add demo GIF showing an audit in action
 <p align="center">
   <img src="docs/demo.gif" alt="MCP Dependency Doctor demo" width="800">
 </p>
--->
+
+---
 
 ## 📋 Table of Contents
 
@@ -166,6 +207,17 @@ Agents can run `dependency_audit` on both the base branch and the PR branch to p
 ## What It Checks
 
 MCP Dependency Doctor exposes **four read-only MCP tools**:
+
+## Tools
+
+| Tool | Description | Network Access |
+|------|-------------|----------------|
+| `dependency_inventory` | Read declared dependencies and exact installed versions from npm lockfile v2/v3. No network. | ❌ Fully offline |
+| `dependency_audit` | Run read-only npm audit. Sends package versions to the configured npm registry. Never installs or fixes packages. | ✅ npm registry (user's configured registry) |
+| `dependency_outdated` | Read available updates using npm outdated. Requires network; never changes dependencies. | ✅ npm registry |
+| `package_health` | Inspect public npm package deprecation, release age, Node engine and peer requirements. Requirements are reported, not certified compatible. | ✅ registry.npmjs.org (no npm credentials) |
+
+**Detailed behavior:**
 
 | Tool | What It Does | Network |
 |------|-------------|---------|
@@ -372,6 +424,28 @@ A GitHub star helps other developers discover the project and lets you save it f
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License
+
+Copyright (c) 2026 Stefan Petrovici
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+See [LICENSE](LICENSE) for the full license text.
 
 **Author:** Stefan Petrovici ([@petrovicistefan](https://github.com/petrovicistefan))
