@@ -439,5 +439,54 @@
         "publishedAt": "2026-10-19T11:10:57Z"
       }
     }
+  },
+  {
+    "date": "2026-10-22",
+    "npm": {
+      "downloads24h": 8,
+      "downloads7d": 27,
+      "version": "0.1.2",
+      "publishedAt": "2026-10-19T11:10:42.283Z"
+    },
+    "github": {
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "openIssues": 0,
+      "openPullRequests": 0,
+      "contributors": 4,
+      "contributorsMayBeTruncated": false,
+      "recentCommits": [
+        {
+          "sha": "7486926571a69db817d63d8620791a58207c92fe",
+          "date": "2026-10-21T12:55:29Z",
+          "message": "chore(metrics): record daily adoption snapshot"
+        },
+        {
+          "sha": "39823af802f1224f25c10d6f7886c93371221ca6",
+          "date": "2026-10-21T07:40:23Z",
+          "message": "Improve MCP server discoverability for AI agents and directories (#2)"
+        },
+        {
+          "sha": "9951a8769b3a424b3745c24d8598d2efbcfdec0c",
+          "date": "2026-10-20T12:42:50Z",
+          "message": "chore(metrics): record daily adoption snapshot"
+        },
+        {
+          "sha": "21716ef74540196cc51c044eb935835b0645ddad",
+          "date": "2026-10-19T14:39:36Z",
+          "message": "chore(metrics): record daily adoption snapshot"
+        },
+        {
+          "sha": "4a7899e56429a2cf65df63260b6353f4db31679f",
+          "date": "2026-10-19T11:05:39Z",
+          "message": "Rewrite README and bump to 0.1.2 (#1)"
+        }
+      ],
+      "latestRelease": {
+        "tag": "v0.1.2",
+        "publishedAt": "2026-10-19T11:10:57Z"
+      }
+    }
   }
 ]
