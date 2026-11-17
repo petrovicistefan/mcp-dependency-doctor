@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { createInterface } from 'node:readline';
 import { callTool, toolDefinitions } from './doctor.js';
+import { VERSION } from './version.js';
 
 // Dependency-free legacy stdio MCP transport, pinned to 2025-11-25.
 const supported = ['2024-11-05', '2025-03-26', '2025-06-18', '2025-11-25'];
@@ -12,7 +13,7 @@ export async function dispatch(request) {
   const result = value => ({jsonrpc:'2.0',id:request.id,result:value});
   if (request.method === 'initialize') {
     initialized = true;
-    return result({protocolVersion:supported.includes(request.params?.protocolVersion)?request.params.protocolVersion:'2025-11-25',capabilities:{tools:{listChanged:false}},serverInfo:{name:'mcp-dependency-doctor',version:'0.1.2'}});
+    return result({protocolVersion:supported.includes(request.params?.protocolVersion)?request.params.protocolVersion:'2025-11-25',capabilities:{tools:{listChanged:false}},serverInfo:{name:'mcp-dependency-doctor',version:VERSION}});
   }
   if (request.method === 'ping') return result({});
   if (!initialized) return {jsonrpc:'2.0',id:request.id,error:{code:-32002,message:'Initialize first'}};
