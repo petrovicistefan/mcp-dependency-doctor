@@ -18,8 +18,11 @@
   "scripts": {
     "start": "node src/server.js",
     "start:hosted": "node --env-file=.env src/hosted.js",
-    "test": "node --test",
-    "check": "node --check src/server.js && node --check src/doctor.js && node --check src/control-plane-client.js && node --check src/hosted.js"
+    "test": "node --test test/*.test.js",
+    "check": "node --check src/server.js && node --check src/doctor.js && node --check src/control-plane-client.js && node --check src/hosted.js && node --check src/version.js && node --check scripts/check-rules.mjs",
+    "test:integration": "node test/mcp.integration.js",
+    "check:rules": "node scripts/check-rules.mjs",
+    "prepublishOnly": "npm run check && npm run check:rules && npm test && npm run test:integration"
   },
   "license": "MIT",
   "keywords": [
@@ -44,5 +47,8 @@
   "bugs": {
     "url": "https://github.com/petrovicistefan/mcp-dependency-doctor/issues"
   },
-  "author": "Stefan Petrovici"
+  "author": "Stefan Petrovici",
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0"
+  }
 }
