@@ -1,13 +1,15 @@
 # MCP Dependency Doctor
 
-**Let your AI agent audit npm dependencies safely: inventory, vulnerabilities, outdated and deprecated packages — read-only, never runs install.**
+**MCP server for npm dependency audits: inventory, vulnerabilities, outdated and deprecated packages — read-only, never runs `npm install`.**
 
-Locally diagnose npm projects with package-lock.json: four MCP tools that read lockfiles, run npm audit, check for outdated versions, and inspect public package health. Zero setup, no API keys.
+Let Claude Code, Cursor or Codex diagnose npm projects with `package-lock.json` safely: four MCP tools read lockfiles, run `npm audit`, check for outdated versions, and inspect public package health. Zero setup, no API keys.
 
 [![npm version](https://img.shields.io/npm/v/mcp-dependency-doctor?color=blue)](https://www.npmjs.com/package/mcp-dependency-doctor)
 [![npm downloads](https://img.shields.io/npm/dm/mcp-dependency-doctor)](https://www.npmjs.com/package/mcp-dependency-doctor)
 [![Glama](https://glama.ai/mcp/servers/petrovicistefan/mcp-dependency-doctor/badge)](https://glama.ai/mcp/servers/petrovicistefan/mcp-dependency-doctor)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **Part of the [petrovicistefan MCP suite](https://github.com/petrovicistefan/mcp-marketplace)** — local-first guardrails for AI coding agents (Claude Code, Cursor, Codex).
 
 ---
 
