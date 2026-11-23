@@ -1762,5 +1762,54 @@
         "publishedAt": "2026-10-19T11:10:57Z"
       }
     }
+  },
+  {
+    "date": "2026-11-23",
+    "npm": {
+      "downloads24h": 7,
+      "downloads7d": 298,
+      "version": "0.1.3",
+      "publishedAt": "2026-11-17T22:38:18.786Z"
+    },
+    "github": {
+      "stars": 0,
+      "forks": 0,
+      "watchers": 0,
+      "openIssues": 0,
+      "openPullRequests": 0,
+      "contributors": 2,
+      "contributorsMayBeTruncated": false,
+      "recentCommits": [
+        {
+          "sha": "005b6ca108b96f14e9a8a95d1eacd4eede39e529",
+          "date": "2026-11-17T23:33:46Z",
+          "message": "docs: strengthen discovery SEO (package metadata, README intro, registry description)"
+        },
+        {
+          "sha": "b6a9aaceaf5ba1e1a77f5ad21022d11734f1f971",
+          "date": "2026-11-17T22:35:01Z",
+          "message": "Merge pull request #5 from petrovicistefan/fix/release-npm-ci"
+        },
+        {
+          "sha": "565368403340427072f2d4c4c830b31d865b4549",
+          "date": "2026-11-17T22:34:55Z",
+          "message": "fix(ci): install deps in Release before prepublishOnly"
+        },
+        {
+          "sha": "0818336306e12b0c7d2dc3e65f40b75a8d5788ce",
+          "date": "2026-11-17T22:21:04Z",
+          "message": "Merge pull request #4 from petrovicistefan/release/0.1.3"
+        },
+        {
+          "sha": "8a30e80bf6711e3d278e287a4ac8162da5c3af67",
+          "date": "2026-11-17T22:20:57Z",
+          "message": "release: 0.1.3 version source of truth and check:rules"
+        }
+      ],
+      "latestRelease": {
+        "tag": "v0.1.3",
+        "publishedAt": "2026-11-17T22:38:37Z"
+      }
+    }
   }
 ]
